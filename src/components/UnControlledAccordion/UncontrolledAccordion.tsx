@@ -11,11 +11,8 @@ export function UncontrolledAccordion(props: AccordionPropsType) {
     let [accor, setAcc] = useState(true);
 
         return (<div>
-            <button onClick={() => {
-                setAcc(!accor)
-            }}>TOGGLE
-            </button>
-            <AccordionTitle title={props.titleValue}/>
+            <button onClick={() => {setAcc(!accor)}}>TOGGLE</button>
+            <AccordionTitle title={props.titleValue} onClick={ () => {setAcc(!accor)} } />
             {!accor && <AccordionBody/>}
         </div>)
 
@@ -25,12 +22,13 @@ export function UncontrolledAccordion(props: AccordionPropsType) {
 
 type AccordionTitlePropsType = {
     title: string
+    onClick: () => void
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     console.log('AccordionTitle rendering')
     return (
-        <h3>{props.title}</h3>
+        <h3 onClick={ props.onClick }>{props.title}</h3>
     )
 }
 
@@ -44,5 +42,3 @@ function AccordionBody() {
         </ul>
     )
 }
-
-export default UncontrolledAccordion;
