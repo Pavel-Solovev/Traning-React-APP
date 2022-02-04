@@ -33,8 +33,8 @@ function AccordionBody() {
 export function Accordion(props: AccordionPropsType) {
     console.log('Accordion rendering')
         return (<div>
-            <button onClick={()=>props.onChange(!props.value)}>TOGGLE</button>
             <AccordionTitle title={props.titleValue}/>
+            <button onClick={(e)=>props.onChange(!props.value)}>TOGGLE</button>
             {!props.value && <AccordionBody/>}
         </div>)
     }

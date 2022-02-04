@@ -11,8 +11,8 @@ export function UncontrolledAccordion(props: AccordionPropsType) {
     let [accor, setAcc] = useState(true);
 
         return (<div>
-            <button onClick={() => {setAcc(!accor)}}>TOGGLE</button>
             <AccordionTitle title={props.titleValue} onClick={ () => {setAcc(!accor)} } />
+            <button onClick={() => {setAcc(!accor)}}>TOGGLE</button>
             {!accor && <AccordionBody/>}
         </div>)
 
