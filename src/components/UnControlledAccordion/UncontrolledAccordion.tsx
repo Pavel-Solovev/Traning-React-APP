@@ -6,6 +6,8 @@ type AccordionPropsType = {
     titleValue: string
     // collapsed: boolean
 }
+const AccordionTitleMemo = React.memo(AccordionTitle)
+const AccordionBodyMemo = React.memo(AccordionBody)
 
 export function UncontrolledAccordion(props: AccordionPropsType) {
     console.log('Accordion rendering')
@@ -13,9 +15,9 @@ export function UncontrolledAccordion(props: AccordionPropsType) {
     let [accor, dispatch] = useReducer(reducer, {collapsed: false});
 
         return (<div>
-            <AccordionTitle title={props.titleValue} onClick={ () => {dispatch({type: TOGGLE_CONSTANT })} } />
+            <AccordionTitleMemo title={props.titleValue} onClick={ () => {dispatch({type: TOGGLE_CONSTANT })} } />
             <button onClick={() => {dispatch({type: TOGGLE_CONSTANT})}}>TOGGLE</button>
-            {!accor.collapsed && <AccordionBody/>}
+            {!accor.collapsed && <AccordionBodyMemo/>}
         </div>)
 
 }

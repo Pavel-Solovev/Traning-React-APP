@@ -6,6 +6,7 @@ import {OnOff} from "./components/OnOff/OnOff";
 
 
 function App() {
+    const [acc, setAcc] = useState(false)
     console.log('App rendering')
 
     const [ratingValue, setRatingValue] = useState<AppRatingPropsType>(0)
@@ -23,8 +24,12 @@ function App() {
             <PageTitle title={'My friends'}/>
             Article 1
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <Accordion value={accordionCollapsed} onChange={setAccordionCollapsed} titleValue={'Menu'}/>
-            <Accordion value={accordionCollapsed} onChange={setAccordionCollapsed} titleValue={'Users'}/>
+            <Accordion value={accordionCollapsed}
+                       onChange={()=>(setAcc(!acc))}
+                       titleValue={'Menu'}
+                       onClick={setAcc}
+                       items={[{title: '1', value: 1}, {title: '2', value: 2}, {title: '3', value: 3}, {title: '4', value: 4}]}/>
+            {/*<Accordion value={accordionCollapsed} onChange={setAccordionCollapsed} titleValue={'Users'}/>*/}
             Article 2
             <Rating value={ratingValue} onClick={setRatingValue}/>
             <Rating value={ratingValue} onClick={setRatingValue}/>

@@ -18,10 +18,13 @@ type AccordionTitlePropsType = {
     onChange: ()=>void
 }
 
+const AccordionTitleMemo = React.memo(AccordionTitle)
+const AccordionBodyMemo = React.memo(AccordionBody)
+
 export function Accordion(props:AccordionPropsType) {
     return <div>
-        <AccordionTitle title={props.titleValue} onChange={props.onChange}  />
-        {!props.value && <AccordionBody items={props.items} onClick={props.onClick}/>}
+        <AccordionTitleMemo title={props.titleValue} onChange={props.onChange}  />
+        {!props.value && <AccordionBodyMemo items={props.items} onClick={props.onClick}/>}
     </div>
 }
 

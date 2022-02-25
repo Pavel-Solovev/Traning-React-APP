@@ -35,6 +35,8 @@ const SelectTitle = ({
 
 }
 
+const SelectTitleMemo = React.memo(SelectTitle)
+
 const SelectBody = ({
                         item,
                         onChangeTitle,
@@ -57,6 +59,8 @@ const SelectBody = ({
 
 }
 
+const SelectBodyMemo = React.memo(SelectBody)
+
 export const Select = ({
     titleValue,
     item,
@@ -67,8 +71,8 @@ export const Select = ({
                        }:SelectTypeProps) => {
     return (
         <div>
-            <SelectTitle titleValue={titleValue} onChange={onChange} />
-            {!value && <SelectBody titleValue={titleValue} item={item} onChangeTitle={onChangeTitle}/>}
+            <SelectTitleMemo titleValue={titleValue} onChange={onChange} />
+            {!value && <SelectBodyMemo titleValue={titleValue} item={item} onChangeTitle={onChangeTitle}/>}
 
         </div>
     );
