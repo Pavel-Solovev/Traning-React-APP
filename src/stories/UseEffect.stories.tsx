@@ -8,14 +8,16 @@ export const SimpleExample = () => {
     const a = new Date()
     const [fake, setFake] = useState(1)
     const [counter, setCounter] = useState(1)
-    const [time, setTime] = useState([0, 0, 0])
+
+
+
+    const [time, setTime] = useState([a.getHours(), a.getMinutes(), a.getSeconds()])
 
 
     console.log('SimpleExample')
 
     useEffect(() => {
         setInterval(() => {
-            debugger
             setTime(state => [state[0], state[1], state[2] + 1])
             if (time[2] >= 60) {
                 setTime(state => [state[0], state[1] + 1, state[2] = 0])
@@ -33,7 +35,7 @@ export const SimpleExample = () => {
             //         , state[0] > 23 ? 0 : state[0]])
             // })
         }, 1000)
-    }, [time[2]])
+    }, [])
 
     // useEffect(() => {
     //     console.log('useEffect every render')
